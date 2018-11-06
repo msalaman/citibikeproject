@@ -8,23 +8,23 @@ class _citibike_database:
 		self.stations = dict()
 
 	def load_stations(self, station_file):
-	''' load info from file into local datasource self.stations
-	{	
-		[
-		sid: {
-			"stationName": str, 
-			"availableDocks": int,
-			"availableBikes": int,
-			"latitude": float,
-			"longitude": float,
-			"stAddress1": str,
-			"lastCommunicationTime": str,
-			"statusValue": str
+		''' load info from file into local datasource self.stations
+		{	
+			[
+			sid: {
+				"stationName": str, 
+				"availableDocks": int,
+				"availableBikes": int,
+				"latitude": float,
+				"longitude": float,
+				"stAddress1": str,
+				"lastCommunicationTime": str,
+				"statusValue": str
+			}
+			sid: { }
+			]
 		}
-		sid: { }
-		]
-	}
-	'''
+		'''
 	
 		f = open(station_file)
 		data = json.load(f)
@@ -41,14 +41,14 @@ class _citibike_database:
 			temp['lastCommunicationTime'] = station['lastCommunicationTime']
 			temp['statusValue'] = station['statusValue']
 			self.stations[key] = temp			
-		print(self.stations)
+		#print(self.stations)
         
 	def get_station(self, sid):
 	# get information for a station ID
-		if sid in self.stations:
-			return self.stations['sid']
+		if sid in self.stations.keys():
+			return self.stations[sid]
 		else:
-			return "Error"
+			return 'error'
 	
 	def park_bike(self, sid):
 	# user is going to park a bike, reduce available bikes at station sid by 1
@@ -68,7 +68,7 @@ class _citibike_database:
 	
 	def reset_data(self):
 	# reset data to original values from data file
-		self.load_data('bikeStations.dat')
+		self.load_stations('bikeStations.dat')
 	
 	def get_service(self, sid):
 	# returns the status of bike station
@@ -81,8 +81,8 @@ class _citibike_database:
 	# change status value of bike station
 		if sid in self.stations:
 			if self.stations[sid]['statusValue'] == "In Service":
-				self.stations[sid]['statusValue'] = "Out of Service"
-			if self.stations[sid]['statusValue'] == "Out of Service":
+				self.stations[sid]['statusValue'] = "Not In Service"
+			elif self.stations[sid]['statusValue'] == "Not In Service":
 				self.stations[sid]['statusValue'] = "In Service"
 				
 	def get_closest_station(self, my_lat, my_long):
@@ -94,9 +94,9 @@ class _citibike_database:
 		minID = -1
 		
 		for station in self.stations:
-			lat = self.stations['latitude']
-			long = self.stations['longitude']
-			distance = math.sqrt((my_long - long)**2 + (my_lat - lat)**2)
+			lat = self.stations[station]['latitude']
+			long_ = self.stations[station]['longitude']
+			distance = math.sqrt((my_long - long_)**2 + (my_lat - lat)**2)
 			if distance <= minDistance:
 					minDistance = distance
 					minID = station
@@ -104,6 +104,8 @@ class _citibike_database:
 		if minID < 0:
 			return "error"
 		
+		# print("DISTANCE: " + minDistance)
+		# print("DISTANCE: " + minDistance)
 		return self.stations[minID]
 				
 		
@@ -121,6 +123,8 @@ if __name__ == "__main__":
 	db = _citibike_database()
 
 	db.load_stations('bikeStations.dat')
+
+	db.get_station('281')
 	
 
 
