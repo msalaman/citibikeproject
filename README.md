@@ -12,16 +12,16 @@ A user will receive the number of available docks or number of a available bikes
 
 #### _citibike_database.py
 
-* load_stations: loads json from data file into a formatted dictionary
-* get_station(sid): returns data for specified station
-* park_bike(sid): increases available bikes for specific station by 1, decreases available docks of specific station by 1
-* rent_bike(sid): decreases available bikes for specific station by 1, increases available docks of specific station by 1
-* reset_data: resets dictionary to original values from data file
-* get_service(sid): returns if bike station is in service or not
-* update_service(sid): changes service value for bike station
-* get_closest_station(latitude, longitude): returns information for closest station to users inputted latitude and longitude
-* delete_station(sid): deletes specific station from dictionary
-* delete_all_stations: clears dictionary of all stations
+* ```load_stations```: loads json from data file into a formatted dictionary
+* ```get_station(sid)```: returns data for specified station
+* ```park_bike(sid)```: increases available bikes for specific station by 1, decreases available docks of specific station by 1
+* ```rent_bike(sid```): decreases available bikes for specific station by 1, increases available docks of specific station by 1
+* ```reset_data```: resets dictionary to original values from data file
+* ```get_service(sid)```: returns if bike station is in service or not
+* ```update_service(sid)```: changes service value for bike station
+* ```get_closest_station(latitude, longitude)```: returns information for closest station to users inputted latitude and longitude
+* ```delete_station(sid)```: deletes specific station from dictionary
+* ```delete_all_stations```: clears dictionary of all stations
 
 
 ### Test
