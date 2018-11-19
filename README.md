@@ -27,4 +27,3 @@ A user will receive the number of available docks or number of a available bikes
 ### Test
 
 To test the functionality of _citibike_database.py, run ```python3 test_api.py``` in the api_files directory. This test file tests the functions created in the _citibike_database class. 
-
