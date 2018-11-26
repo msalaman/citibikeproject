@@ -11,9 +11,10 @@ from _citibike_database import _citibike_database
 def start_service():
     dispatcher = cherrypy.dispatch.RoutesDispatcher()
     bdb_o = _citibike_database()
+    bdb_o.load_stations('bikeStations.dat')
     # instantiate controllers
-    stationController = StationsController(bdb=bdb_o)
-    closeController = CloseController(bdb=bdb_o)
+    stationController = StationsController(bdb_o)
+    closeController = CloseController(bdb_o)
     #rentController = RentController(bdb=bdb_o)
     #parkController =ParkController(bdb=bdb_o)
     #serviceController = ServiceController(bdb=bdb_o)
@@ -26,6 +27,8 @@ def start_service():
 
 
     # /stations/:id - GET, DELETE
+    dispatcher.connect('station_get', '/stations/:sid', controller=stationController, action='GET', conditions=dict(method=['GET']))
+    dispatcher.connect('station_delete', '/stations/:sid', controller=stationController, action='DELETE', conditions=dict(method=['DELETE']))
 
     # /closest/ - POST
     dispatcher.connect('closest_post', '/closest/', controller=closeController, action='POST', conditions=dict(method=['POST']))

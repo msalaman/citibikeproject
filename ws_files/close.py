@@ -10,8 +10,8 @@ class CloseController(object):
 	def POST(self):
 		output = {'result':'success'}
 		data = json.loads(cherrypy.request.body.read())
-		lat = data[0]
-		lon = data[1]
-		sid = self.bdb.get_closest(lat, lon)
+		lat = data['latitude']
+		lon = data['longitude']
+		sid = self.bdb.get_closest_station(lat, lon)
 		output['station_id'] = sid
 		return json.dumps(output)
