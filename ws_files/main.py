@@ -21,6 +21,9 @@ def start_service():
     # resources
 
     # /stations/ - GET, POST
+    dispatcher.connect('get_station', '/stations/', controller=stationController, action='GET', conditions=dict(method=['GET']))
+    dispatcher.connect('post_station', '/stations/', controller=stationController, action='POST', conditions=dict(method=['POST']))
+
 
     # /stations/:id - GET, DELETE
 
