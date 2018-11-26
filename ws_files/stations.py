@@ -4,21 +4,15 @@ import cherrypy
 
 from _citibike_database import _citibike_database
 
-class StationsController(object):
-	def __init__(self, bdb=None):
-		if bdb is None:
-			self.bdb = _citibike_database()
-		else:
-			self.bdb = bdb
 
-		self.bdb.load_stations('bikeStations.dat')
+class StationsController(object): 
+	def __init(self, bdb):
+		self.bdb=bdb
 
 	# /stations/
 	def GET_STATIONS(self):
 		l = []
 		for i in self.bdb:
-
-
 			
 			genreTitle = self.mdb.get_movie(i) # get genre and title for i [name, genres]
 			temp = {}
@@ -29,4 +23,33 @@ class StationsController(object):
 			l.append(temp)
 
 		output = {'movies':l, 'result':'success'}
+		return json.dumps(output)
+
+	# /stations/:id
+	def GET(self, sid):
+		output = {'result':'success'}
+		sid = int(sid)
+		station = self.bdb.get_station(sid)
+		if station != None:
+			output['stationName'] = station['stationName']
+			output['availableDocks'] = station['availableDocks']
+			output['availableBikes'] = station['availableBikes']
+			output['latitude'] = station['latitude']
+			output['longitude'] = station['longitude']
+			output['stAddress1'] = station['stAddress1']
+			output['lastCommunicationTime'] = station['lastCommunicationTime']
+			output['statusValue'] = station['statusValue']
+		else:
+			output['result'] = 'error'
+			output['message'] = 'station not found'
+		return json.dumps(output)
+
+
+		self.bdb.load_stations('bikeStations.dat')
+
+
+	def DELETE(self, sid):
+		output = {'result':'success'}
+		sid = int(sid)
+		self.bdb.delete_station(sid)
 		return json.dumps(output)
