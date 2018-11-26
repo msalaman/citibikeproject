@@ -5,25 +5,11 @@ import cherrypy
 from _citibike_database import _citibike_database
 
 
-class StationsController(object): 
-	def __init__(self, bdb):
+class StationsController(object):
+	def __init(self, bdb):
+
 		self.bdb=bdb
 
-	# /stations/
-	def GET_STATIONS(self):
-		l = []
-		for i in self.bdb:
-			
-			genreTitle = self.mdb.get_movie(i) # get genre and title for i [name, genres]
-			temp = {}
-			temp['genres'] = genreTitle[1]
-			temp['title'] =  genreTitle[0]
-			temp['id'] = i
-			temp['img'] = self.get_poster_by_mid(int(i))
-			l.append(temp)
-
-		output = {'movies':l, 'result':'success'}
-		return json.dumps(output)
 
 	# /stations/:id
 
@@ -51,4 +37,54 @@ class StationsController(object):
 		output = {'result':'success'}
 		sid = int(sid)
 		self.bdb.delete_station(sid)
+		return json.dumps(output)
+
+	# /stations/
+	def GET_STATIONS(self):
+		l = []
+		for i in self.bdb:
+
+			station = self.bdb[i]
+			temp = {}
+
+			temp['stationName'] = station['stationName']
+			temp['availableDocks'] = station['availableDocks']
+			temp['availableBikes'] = station['availableBikes']
+			temp['latitude'] = station['latitude']
+			temp['longitude'] = station['longitude']
+			temp['stAddress1'] = station['stAddress1']
+			temp['lastCommunicationTime'] = station['lastCommunicationTime']
+			temp['statusValue'] = station['statusValue']
+			l.append(temp)
+
+		output = {'stations':l, 'result':'success'}
+		return json.dumps(output)
+
+	def POST_STATIONS(self):
+		output = {'result':'success'}
+		data = json.loads(cherrypy.request.body.read())
+
+		try:
+			stationName = data['stationName']
+			docks = data['availableDocks']
+			bikes = station['availableBikes']
+			lat = station['latitude']
+			longitude = station['longitude']
+			addr = station['stAddress1']
+			lastCommunicationTime = station['lastCommunicationTime']
+			statusValue = station['statusValue']
+
+			sid = list(self.bdb.keys())[-1] + 1
+			self.bdb[sid] = [stationName, docks, bikes, lat, longitude, addr, lastCommunicationTime, statusValue]
+			output['id'] = sid
+
+		except Exception as ex:
+			output['result'] = 'error'
+			output['message'] = str(ex)
+
+		return json.dumps(output)
+
+	def DELETE_ALL(self):
+		output = {'result':'success'}
+		self.bdb.delete_all_stations()
 		return json.dumps(output)

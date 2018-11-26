@@ -21,7 +21,10 @@ def start_service():
 
     # resources
 
-    # /stations/ - GET, POST
+    # /stations/ - GET, POST, DELETE
+    dispatcher.connect('get_stations', '/stations/', controller=stationController, action='GET_STATIONS', conditions=dict(method=['GET']))
+    dispatcher.connect('post_stations', '/stations/', controller=stationController, action='POST_STATIONS', conditions=dict(method=['POST']))
+    dispatcher.connect('delete_stations', '/stations/', controller=stationController, action='DELETE_ALL', conditions=dict(method=['DELETE']))
 
     # /stations/:id - GET, DELETE
     dispatcher.connect('station_get', '/stations/:sid', controller=stationController, action='GET', conditions=dict(method=['GET']))
@@ -29,6 +32,7 @@ def start_service():
 
     # /closest/ - POST
     dispatcher.connect('closest_post', '/closest/', controller=closeController, action='POST', conditions=dict(method=['POST']))
+
     # /rent/:id - PUT
 
     # /park/:id - PUT
