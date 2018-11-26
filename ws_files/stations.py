@@ -6,13 +6,11 @@ from _citibike_database import _citibike_database
 
 
 class StationsController(object):
-	def __init(self, bdb):
-
+	def __init__(self, bdb):
 		self.bdb=bdb
 
 
 	# /stations/:id
-
 	def GET(self, sid):
 		output = {'result':'success'}
 		sid = int(sid)
@@ -42,9 +40,8 @@ class StationsController(object):
 	# /stations/
 	def GET_STATIONS(self):
 		l = []
-		for i in self.bdb:
-
-			station = self.bdb[i]
+		for i in self.bdb.stations:
+			station = self.bdb.get_station(i)
 			temp = {}
 
 			temp['stationName'] = station['stationName']
@@ -57,25 +54,27 @@ class StationsController(object):
 			temp['statusValue'] = station['statusValue']
 			l.append(temp)
 
-		output = {'stations':l, 'result':'success'}
+		output = {'result':'success', 'stations':l}
 		return json.dumps(output)
 
 	def POST_STATIONS(self):
 		output = {'result':'success'}
 		data = json.loads(cherrypy.request.body.read())
+		temp = {}
 
 		try:
-			stationName = data['stationName']
-			docks = data['availableDocks']
-			bikes = station['availableBikes']
-			lat = station['latitude']
-			longitude = station['longitude']
-			addr = station['stAddress1']
-			lastCommunicationTime = station['lastCommunicationTime']
-			statusValue = station['statusValue']
+			temp['stationName'] = data['stationName']
+			temp['availableDocks']  = data['availableDocks']
+			temp['availableBikes']  = data['availableBikes']
+			temp['latitude'] = data['latitude']
+			temp['longitude']  = data['longitude']
+			temp['stAddress1']  = data['stAddress1']
+			temp['lastCommunicationTime'] = data['lastCommunicationTime']
+			temp['statusValue'] = data['statusValue']
 
-			sid = list(self.bdb.keys())[-1] + 1
-			self.bdb[sid] = [stationName, docks, bikes, lat, longitude, addr, lastCommunicationTime, statusValue]
+			sid = list(self.bdb.stations.keys())[-1] + 1
+			sid = int(sid)
+			self.bdb.stations[sid] = temp
 			output['id'] = sid
 
 		except Exception as ex:
