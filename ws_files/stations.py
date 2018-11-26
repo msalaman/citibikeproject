@@ -6,14 +6,14 @@ from _citibike_database import _citibike_database
 
 
 class StationsController(object): 
-	def __init(self, bdb):
+	def __init__(self, bdb):
 		self.bdb=bdb
 
 
 
 	
 
-	GET(self, sid):
+	def GET(self, sid):
 		output = {'result':'success'}
 		sid = int(sid)
 		station = self.bdb.get_station(sid)
@@ -32,7 +32,7 @@ class StationsController(object):
 		return json.dumps(output)
 
 
-	DELETE(self, sid):
+	def DELETE(self, sid):
 		output = {'result':'success'}
 		sid = int(sid)
 		self.bdb.delete_station(sid)
