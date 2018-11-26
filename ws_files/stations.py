@@ -2,13 +2,13 @@ import json
 import requests
 import cherrypy
 
-from _citibike_database import _movie_database
+from _citibike_database import _citibike_database
 
-class StationsController(object): 
-	def __init(self, db=None):
-		if db is None: 
-			self.db = _citibike_database()
+class StationsController(object):
+	def __init__(self, bdb=None):
+		if bdb is None:
+			self.bdb = _citibike_database()
 		else:
-			self.db = db
+			self.bdb = bdb
 
-		self.db.load_stations()
+		self.bdb.load_stations('bikeStations.dat')
