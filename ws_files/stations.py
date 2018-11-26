@@ -6,7 +6,7 @@ from _citibike_database import _citibike_database
 
 
 class StationsController(object): 
-	def __init(self, bdb):
+	def __init__(self, bdb):
 		self.bdb=bdb
 
 	# /stations/
@@ -26,6 +26,7 @@ class StationsController(object):
 		return json.dumps(output)
 
 	# /stations/:id
+
 	def GET(self, sid):
 		output = {'result':'success'}
 		sid = int(sid)
@@ -44,8 +45,6 @@ class StationsController(object):
 			output['message'] = 'station not found'
 		return json.dumps(output)
 
-
-		self.bdb.load_stations('bikeStations.dat')
 
 
 	def DELETE(self, sid):
