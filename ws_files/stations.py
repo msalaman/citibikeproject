@@ -15,7 +15,7 @@ class StationsController(object):
 		output = {'result':'success'}
 		sid = int(sid)
 		station = self.bdb.get_station(sid)
-		if station != None:
+		if station != 'error':
 			output['stationName'] = station['stationName']
 			output['availableDocks'] = station['availableDocks']
 			output['availableBikes'] = station['availableBikes']
