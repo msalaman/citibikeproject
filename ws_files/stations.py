@@ -2,7 +2,8 @@ import json
 import requests
 import cherrypy
 
-from _citibike_database import _movie_database
+from _citibike_database import _citibike_database
+
 
 class StationsController(object): 
 	def __init(self, bdb):
