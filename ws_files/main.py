@@ -1,10 +1,10 @@
+import json
 import cherrypy
-
 from stations import StationsController
 from close import CloseController
-#from rent import RentController
-#from park import ParkController
-#from service import ServiceController
+from rent import RentController
+from park import ParkController
+from service import ServiceController
 from reset import ResetController
 
 from _citibike_database import _citibike_database
@@ -16,9 +16,9 @@ def start_service():
     # instantiate controllers
     stationController = StationsController(bdb_o)
     closeController = CloseController(bdb_o)
-    #rentController = RentController(bdb=bdb_o)
-    #parkController =ParkController(bdb=bdb_o)
-    #serviceController = ServiceController(bdb=bdb_o)
+    rentController = RentController(bdb=bdb_o)
+    parkController = ParkController(bdb=bdb_o)
+    serviceController = ServiceController(bdb=bdb_o)
     resetController = ResetController(bdb_o)
     # resources
 
@@ -35,11 +35,14 @@ def start_service():
     dispatcher.connect('closest_post', '/closest/', controller=closeController, action='POST', conditions=dict(method=['POST']))
 
     # /rent/:id - PUT
+    dispatcher.connect('rent_put', '/rent/:sid', controller=rentController, action='PUT_SID', conditions=dict(method=['PUT']))
 
     # /park/:id - PUT
+    dispatcher.connect('park_put', '/park/:sid', controller=parkController, action='PUT_PARK_SID', conditions=dict(method=['PUT']))
 
     # /service/:id - GET, PUT
-
+    dispatcher.connect('service_get', '/service/:sid', controller=serviceController, action='GET_SERVICE_SID', conditions=dict(method=['GET']))
+    dispatcher.connect('service_put', '/service/:sid', controller=serviceController, action='PUT_SERVICE_SID', conditions=dict(method=['PUT']))
 
 	# /reset/ - PUT
     dispatcher.connect('reset_put', '/reset/', controller=resetController, action='PUT', conditions=dict(method=['PUT']))
