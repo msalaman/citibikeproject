@@ -17,7 +17,7 @@ The CherryPy server is hosted on student04.cse.nd.edu:52080.
 * ```POST```: send payload with {latitude, longitude} to get closest station to location
 
 /rent/:id
-* ```PUT``: take an available bike out of station x
+* ```PUT```: take an available bike out of station x
 
 /park/:id
 * ```PUT```: park rented bike at an available dock at station x
