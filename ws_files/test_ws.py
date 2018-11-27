@@ -136,20 +136,75 @@ class TestWebService(unittest.TestCase):
 		r = requests.post(self.CLOSEST_URL, json.dumps(m))
 		self.assertTrue(self.is_json(r.content.decode('utf-8')))
 		resp = json.loads(r.content.decode('utf-8'))
-		self.assertEquals(resp['station_id'], 281) 
+		self.assertEqual(resp['station_id'], 281) 
 
 	#test rent_put
+	def test_rent_put(self):
+		self.reset_data()
+		station_id = 281
+		m = {}
+		r = requests.put(self.RENT_URL + str(station_id), json.dumps(m))
+		self.assertTrue(self.is_json(r.content.decode()))
+		resp = json.loads(r.content.decode())
 
-
+		r = requests.get(self.STATIONS_URL + str(station_id))
+		self.assertTrue(self.is_json(r.content.decode()))
+		resp = json.loads(r.content.decode())
+		self.assertEqual(resp['stationName'], 'Grand Army Plaza & Central Park S')
+		self.assertEqual(resp['availableBikes'], 35)
+		self.assertEqual(resp['availableDocks'], 14)
 
 	#test park_put
+	def test_park_put(self):
+		self.reset_data()
+		station_id = 281
+		m = {}
+		r = requests.put(self.PARK_URL + str(station_id), json.dumps(m))
+		self.assertTrue(self.is_json(r.content.decode()))
+		resp = json.loads(r.content.decode())
 
-
+		r = requests.get(self.STATIONS_URL + str(station_id))
+		self.assertTrue(self.is_json(r.content.decode()))
+		resp = json.loads(r.content.decode())
+		self.assertEqual(resp['stationName'], 'Grand Army Plaza & Central Park S')
+		self.assertEqual(resp['availableBikes'], 37)
+		self.assertEqual(resp['availableDocks'], 12)
 
 	#test service_get
-
+	def test_service_get(self):
+		self.reset_data()
+		station_id = 281
+		r = requests.get(self.SERVICE_URL + str(station_id))
+		self.assertTrue(self.is_json(r.content.decode('utf-8')))
+		resp = json.loads(r.content.decode('utf-8'))
+		self.assertEqual(resp['result'], 'success')
+		self.assertEqual(resp['value'], "In Service")
 
 	#test service_put
+	def test_service_put(self):
+		self.reset_data()
+		station_id = 281
+		m = {}
+		r = requests.put(self.SERVICE_URL + str(station_id), json.dumps(m))
+		self.assertTrue(self.is_json(r.content.decode('utf-8')))
+		resp = json.loads(r.content.decode('utf-8'))
+
+		r = requests.get(self.STATIONS_URL + str(station_id))
+		self.assertTrue(self.is_json(r.content.decode('utf-8')))
+		resp = json.loads(r.content.decode('utf-8'))
+		self.assertEqual(resp['stationName'], 'Grand Army Plaza & Central Park S')
+		self.assertEqual(resp['statusValue'], "Not In Service")
+		
+		r = requests.put(self.SERVICE_URL + str(station_id), json.dumps(m))
+		self.assertTrue(self.is_json(r.content.decode('utf-8')))
+		resp = json.loads(r.content.decode('utf-8'))
+
+		r = requests.get(self.STATIONS_URL + str(station_id))
+		self.assertTrue(self.is_json(r.content.decode('utf-8')))
+		resp = json.loads(r.content.decode('utf-8'))
+		self.assertEqual(resp['stationName'], 'Grand Army Plaza & Central Park S')
+		self.assertEqual(resp['statusValue'], "In Service")
+
 
 if __name__ == "__main__":
 	unittest.main()
