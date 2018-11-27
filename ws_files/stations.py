@@ -43,7 +43,8 @@ class StationsController(object):
 		for i in self.bdb.stations:
 			station = self.bdb.get_station(i)
 			temp = {}
-
+			
+			temp['station_id'] = i
 			temp['stationName'] = station['stationName']
 			temp['availableDocks'] = station['availableDocks']
 			temp['availableBikes'] = station['availableBikes']
