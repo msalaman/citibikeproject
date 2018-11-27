@@ -5,6 +5,7 @@ from close import CloseController
 #from rent import RentController
 #from park import ParkController
 #from service import ServiceController
+from reset import ResetController
 
 from _citibike_database import _citibike_database
 
@@ -18,7 +19,7 @@ def start_service():
     #rentController = RentController(bdb=bdb_o)
     #parkController =ParkController(bdb=bdb_o)
     #serviceController = ServiceController(bdb=bdb_o)
-
+    resetController = ResetController(bdb_o)
     # resources
 
     # /stations/ - GET, POST, DELETE
@@ -39,6 +40,9 @@ def start_service():
 
     # /service/:id - GET, PUT
 
+
+	# /reset/ - PUT
+    dispatcher.connect('reset_put', '/reset/', controller=resetController, action='PUT', conditions=dict(method=['PUT']))
 
     # configuration for server
     conf = { 'global' : { 'server.socket_host' :'student04.cse.nd.edu', 'server.socket_port' : 52080 },

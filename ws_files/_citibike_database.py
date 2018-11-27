@@ -105,7 +105,7 @@ class _citibike_database:
 
 		# print("DISTANCE: " + minDistance)
 		# print("DISTANCE: " + minDistance)
-		return self.stations[minID]
+		return minID
 
 
 	def delete_station(self, sid):
