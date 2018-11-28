@@ -4,6 +4,8 @@ The CherryPy server is hosted on student04.cse.nd.edu:52080.
 
 ### User Interaction
 
+(Refer to jsonSpecification.txt for expected inputs/outputs for each request)
+
 /stations/
 * ```GET```: view all stations and station information
 * ```POST```: send payload with '''{stationName, availableDocks, availableBikes, latitude, longitue, stAddress1, lastCommunicationTime, statusValue}''' to add a new bike station to the database. The new station will be given the next available station id. 
