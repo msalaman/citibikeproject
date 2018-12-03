@@ -1,14 +1,16 @@
-# ws_files
+# Citi Bike Project
+
+### Server (ws_files)
 
 The CherryPy server is hosted on student04.cse.nd.edu:52080. 
 
-### User Interaction
+### User Interaction Functions
 
 (Refer to jsonSpecification.txt for expected inputs/outputs for each request)
 
 /stations/
 * ```GET```: view all stations and station information
-* ```POST```: send payload with '''{stationName, availableDocks, availableBikes, latitude, longitue, stAddress1, lastCommunicationTime, statusValue}''' to add a new bike station to the database. The new station will be given the next available station id. 
+* ```POST```: send payload with '''{stationName, availableDocks, availableBikes, latitude, longitude, stAddress1, lastCommunicationTime, statusValue}''' to add a new bike station to the database. The new station will be given the next available station id. 
 * ```DELETE```: clear database of all station data
 
 /stations/:id
@@ -34,16 +36,10 @@ The CherryPy server is hosted on student04.cse.nd.edu:52080.
 To test the functionality of the server, navigate to the ws_files directory and start up the server with the following command: 
 ```/afs/nd.edu/user14/csesoft/2017-fall/anaconda3/bin/python main.py```
 
-Once the server is running, run the python script ```test_ws.py```
+Once the server is running, run the python script ```python test_ws.py```
 
-### Using the Client
+### Using the Client (client)
 
 The top half of the client contains functions for what a user of Citi Bike might do. This includes finding the closest bike station available, parking or renting a bike, and finding a station name based on its ID. 
 
 The bottom half of the client contains Admin functions, such as adding a new station, deleting a station, and changing the status of a station (whether it is in service or not). 
-
-### ws_files
-* Contains controllers, main program for server creation, and server test file
-
-### client
-* Contains HTML, CSS, JavaScript files for the web client.
