@@ -1,6 +1,6 @@
 function addStation(){
 	var req = new XMLHttpRequest();
-	req.open("POST", "http://student04.cse.nd.edu:52118/stations/", true);
+	req.open("POST", "http://student04.cse.nd.edu:52080/stations/", true);
     var data = {};
 
     data.stationName = document.getElementById('addStationName').value;
@@ -35,7 +35,7 @@ function addStation(){
 function deleteStation(){
 	sid = document.getElementById('delStationID').value;
 	var req = new XMLHttpRequest();
-	req.open("DELETE", "http://student04.cse.nd.edu:52118/stations/" + sid, true);
+	req.open("DELETE", "http://student04.cse.nd.edu:52080/stations/" + sid, true);
 
 	req.onload = function(e){
 		response = JSON.parse(req.responseText);
@@ -51,7 +51,7 @@ function deleteStation(){
 function changeStatus(){
     sid = document.getElementById('changeStationStatus').value;
 	var req = new XMLHttpRequest();
-	req.open("PUT", "http://student04.cse.nd.edu:52118/service/" + sid, true);
+	req.open("PUT", "http://student04.cse.nd.edu:52080/service/" + sid, true);
     var data = {};
     var json = JSON.stringify(data);
 

@@ -9,61 +9,64 @@
 	<script type="text/javascript" src="citiJS.js"></script>
 	<script type="text/javascript" src="admin.js"></script>
 	<div class="mainWindow">
-		<h1 style="color:#E12727;" >CitiBike Tracker</h1>
+		<h1 style="color:#000080;" >CitiBike Tracker</h1>
 		<div class="userBox">
-			<div class="field">
-				Find the <b>closest bike station</b> to you by entering your latitude and longitude: 
-				<div>
+			<div id="closeField">
+				<h2> Find the <b>closest bike station</b> to you by entering your latitude and longitude: </h2>
+				<div class="inputs">
 					<div style="display: inline;">
 						Latitude:
-						<input name="latitude" type="text">
+						<input id="closeLat" type="text">
 					</div>
-					<div style="display: inline">
+					<div style="display: inline;">
 						Longitude:
-						<input name="longitude" type="text">
+						<input id="closeLong" type="text">
 					</div>
 				</div>
-				<button type="button">FIND STATION</button>
-			</div>
-			<div class="field">
-				<b>Park</b> or <b>Pick up</b> a bike from a station based on its station id:
-				<div> 
-					<div style="display: inline-flex;" >
-						Station ID:
-						<input type="text">
-					</div>
-				</div>
-				<div>
-					<div style="display: inline-flex;">
-						<button type="button">PARK BIKE</button>
-					</div>
-					<div style="display: inline-flex">
-						<button type="button">PICK UP BIKE</button>
-					</div>
+				<div class="button">
+					<button type="button" onclick="findStation()">FIND STATION</button>
 				</div>
 			</div>
 			<div class="field">
-				Find the <b>station name</b> or <b>station status</b> based on the station id
-				<div>
+				<h2><b>Park</b> or <b>Pick up</b> a bike from a station based on its station id:</h2>
+				<div class="inputs"> 
 					<div style="display: inline-flex;" >
 						Station ID:
-						<input type="text">
+						<input id="parkId" type="text">
 					</div>
 				</div>
-				<div>
+				<div class="button">
 					<div style="display: inline-flex;">
-						<button type="button">Find STATION NAME</button>
+						<button type="button" onclick="parkBike()">PARK BIKE</button>
 					</div>
 					<div style="display: inline-flex">
-						<button type="button">Find STATION STATUS</button>
+						<button type="button" onclick="pickUpBike()">PICK UP BIKE</button>
+					</div>
+				</div>
+			</div>
+			<div id="nameField" class="field">
+				<h2>Find the <b>station name</b> or <b>station status</b> based on the station id </h2>
+				<div class="inputs">
+					<div style="display: inline-flex;" >
+						Station ID:
+						<input id="nameId" type="text">
+					</div>
+				</div>
+				<div class="button">
+					<div style="display: inline-flex;">
+						<button type="button" onclick="stationName()">Find STATION NAME</button>
+					</div>
+					<div style="display: inline-flex">
+						<button type="button" onclick="stationStatus()">Find STATION STATUS</button>
 					</div>
 				</div>
 			</div>
 		</div>
+		<br><br>
 		<div class="adminBox">
-			<div class="field">
-				<b>Add a station</b>
-				<div>
+			<div>
+				<h2><b>Add a station</b></h2>
+				<div style="margin-left: 10%">
 					<div>
 						Station name: 
 						<input type="text" id="addStationName"> 
@@ -104,35 +107,35 @@
 						</div>
 					</div>
 					<div>
-					<div style="display: inline-flex">
+					<div class="button" style="display: inline-flex">
 						<button onclick="addStation()" type="button">ADD STATION</button>
 					</div>
 				</div>
 				</div>
 			</div> 
 			<div class="field">
-				<b>Delete</b> a station based on its station id:
-				<div> 
+				<h2><b>Delete</b> a station based on its station id:</h2>
+				<div class="inputs"> 
 					<div style="display: inline-flex;" >
 						Station ID:
 						<input type="text" id="delStationID">
 					</div>
 				</div>
-				<div>
+				<div class="button">
 					<div style="display: inline-flex">
 						<button type="button" onclick="deleteStation()">DELETE STATION</button>
 					</div>
 				</div>
 			</div>
 			<div class="field">
-				<b>Change the status</b> of a station based on its station id:
-				<div> 
-					<div style="display: inline-flex;" >
+				<h2><b>Change the status</b> of a station based on its station id:</h2>
+				<div class="inputs"> 
+					<div style="display: inline-flex;">
 						Station ID:
 						<input type="text" id="changeStationStatus">
 					</div>
 				</div>
-				<div>
+				<div class="button">
 					<div style="display: inline-flex">
 						<button onclick="changeStatus()" type="button">CHANGE STATION STATUS</button>
 					</div>

@@ -1,5 +1,6 @@
 body{
 	background-color: #fffdd099; 
+	font-family: "Verdana", Sans-serif;
 }
 
 h1{
@@ -7,19 +8,52 @@ h1{
 	text-align: center;
 }
 
+h2{
+	font-size: 1.15em;
+	font-weight: normal;
+	margin-left: 20px; 
+	margin-bottom: 10px;
+}
+
+.inputs{
+	text-align: center;
+} 
+
+input{
+	margin: 5px;
+	font-size: 1em;
+} 
+.button{
+	text-align: center;
+	margin-top: 15px;
+	
+} 
+
+.button button{
+	background-color: #800000; 
+	color: #fffdd0; 
+	font-size: 0.9em;
+	font-weight: bold;
+} 
+
 .field{
 	margin-top: 50px;
 }
 
-.userBox{
-	background-color: #000080;
-	color: white;
+.addedP{
+	margin: 5px;
+	font-size: 1em;
+	text-align: center;
 }
 
-.userBox.div{
-	margin: 100px;
+.userBox{
+	background-color: #348FD5C8;
+	border-radius: 25px;
+	padding: 6px 6px; 
 }
 
 .adminBox{ 
 	background-color: #348FD5C8;
+	border-radius: 25px;
+	padding: 6px 6px; 
  }
