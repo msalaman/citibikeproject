@@ -41,3 +41,9 @@ Once the server is running, run the python script ```test_ws.py```
 The top half of the client contains functions for what a user of Citi Bike might do. This includes finding the closest bike station available, parking or renting a bike, and finding a station name based on its ID. 
 
 The bottom half of the client contains Admin functions, such as adding a new station, deleting a station, and changing the status of a station (whether it is in service or not). 
+
+### ws_files
+* Contains controllers, main program for server creation, and server test file
+
+### client
+* Contains HTML, CSS, JavaScript files for the web client.
