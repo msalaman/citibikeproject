@@ -3,7 +3,7 @@
 ## Running the Project
 Navigate to the ws_files directory and start up the server with the following command: 
 ```/afs/nd.edu/user14/csesoft/2017-fall/anaconda3/bin/python main.py```
-Then, go to ______ and use the client, which is now interacting with the server.
+Then, go to http://student04.cse.nd.edu/mwest6/citibikeproject/client/ and use the client, which is now interacting with the server.
 
 
 ## API (api_files folder)
