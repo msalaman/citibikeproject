@@ -1,5 +1,11 @@
 # Citi Bike Project
 
+## Running the Project
+Navigate to the ws_files directory and start up the server with the following command: 
+```/afs/nd.edu/user14/csesoft/2017-fall/anaconda3/bin/python main.py```
+Then, go to ______ and use the client, which is now interacting with the server.
+
+
 ## API (api_files folder)
 
 ### Data source
