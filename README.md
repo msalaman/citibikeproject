@@ -5,3 +5,6 @@
 
 ### ws_files
 * Contains controllers, main program for server creation, and server test file
+
+### client
+* Contains HTML, CSS, JavaScript files for the web client.
