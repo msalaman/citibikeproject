@@ -7,6 +7,7 @@
 </head>
 <body>
 	<script type="text/javascript" src="citiJS.js"></script>
+	<script type="text/javascript" src="admin.js"></script>
 	<div class="mainWindow">
 		<h1 style="color:#E12727;" >CitiBike Tracker</h1>
 		<div class="userBox">
@@ -65,61 +66,61 @@
 				<div>
 					<div>
 						Station name: 
-						<input type="text"> 
+						<input type="text" id="addStationName"> 
 					</div>
 						<div>
 							<div style="display: inline-flex;">
 							Available Docks:
-							<input type="text">
+							<input type="text" id="addAvailDocks">
 						</div>
 						<div style="display: inline-flex">
 							Available Bikes:
-							<input type="text">
+							<input type="text" id="addAvailBikes">
 						</div>
 					</div>
 						<div>
 							<div style="display: inline-flex;">
 							Latitude:
-							<input type="text">
+							<input type="text" id="addLatitude">
 						</div>
 						<div style="display: inline-flex">
 							Longitude:
-							<input type="text">
+							<input type="text" id="addLongitude">
 						</div>
 					</div>
 					<div>
 						Address: 
-						<input type="text"> 
+						<input type="text" id="addAddress"> 
 					</div>
 					<div>
 						<div>
 							<div style="display: inline-flex;">
 							Last Communication Time:
-							<input type="text">
+							<input type="text" id="addLastCommTime">
 						</div>
 						<div style="display: inline-flex">
 							Status:
-							<input type="text">
+							<input type="text" id="addStatus">
 						</div>
 					</div>
 					<div>
 					<div style="display: inline-flex">
-						<button type="button">ADD STATION</button>
+						<button onclick="addStation()" type="button">ADD STATION</button>
 					</div>
 				</div>
 				</div>
-			</div>
+			</div> 
 			<div class="field">
 				<b>Delete</b> a station based on its station id:
 				<div> 
 					<div style="display: inline-flex;" >
 						Station ID:
-						<input type="text">
+						<input type="text" id="delStationID">
 					</div>
 				</div>
 				<div>
 					<div style="display: inline-flex">
-						<button type="button">DELETE STATION</button>
+						<button type="button" onclick="deleteStation()">DELETE STATION</button>
 					</div>
 				</div>
 			</div>
@@ -128,12 +129,12 @@
 				<div> 
 					<div style="display: inline-flex;" >
 						Station ID:
-						<input type="text">
+						<input type="text" id="changeStationStatus">
 					</div>
 				</div>
 				<div>
 					<div style="display: inline-flex">
-						<button type="button">CHANGE STATION STATUS</button>
+						<button onclick="changeStatus()" type="button">CHANGE STATION STATUS</button>
 					</div>
 				</div>
 			</div>
