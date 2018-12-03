@@ -9,6 +9,15 @@ from reset import ResetController
 
 from _citibike_database import _citibike_database
 
+class optionsController:
+    def OPTIONS(self, *args, **kargs):
+        return ""
+
+def CORS():
+    cherrypy.response.headers["Access-Control-Allow-Origin"] = "*"
+    cherrypy.response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE, OPTIONS"
+    cherrypy.response.headers["Access-Control-Allow-Credentials"] = "*"
+
 def start_service():
     dispatcher = cherrypy.dispatch.RoutesDispatcher()
     bdb_o = _citibike_database()
@@ -20,7 +29,7 @@ def start_service():
     parkController = ParkController(bdb=bdb_o)
     serviceController = ServiceController(bdb=bdb_o)
     resetController = ResetController(bdb_o)
-    # resources
+	# resources
 
     # /stations/ - GET, POST, DELETE
     dispatcher.connect('get_stations', '/stations/', controller=stationController, action='GET_STATIONS', conditions=dict(method=['GET']))
@@ -44,16 +53,28 @@ def start_service():
     dispatcher.connect('service_get', '/service/:sid', controller=serviceController, action='GET_SERVICE_SID', conditions=dict(method=['GET']))
     dispatcher.connect('service_put', '/service/:sid', controller=serviceController, action='PUT_SERVICE_SID', conditions=dict(method=['PUT']))
 
-	# /reset/ - PUT
+    # /reset/ - PUT
     dispatcher.connect('reset_put', '/reset/', controller=resetController, action='PUT', conditions=dict(method=['PUT']))
+
+    dispatcher.connect('stations_options', '/stations/', controller=optionsController, action = 'OPTIONS', conditions = dict(method=['OPTIONS']))
+    dispatcher.connect('station_id_options', '/stations/:sid', controller=optionsController, action = 'OPTIONS', conditions = dict(method=['OPTIONS']))
+    dispatcher.connect('closest_options', '/closest/', controller=optionsController, action = 'OPTIONS', conditions = dict(method=['OPTIONS']))
+    dispatcher.connect('rent_options', '/rent/:sid', controller=optionsController, action = 'OPTIONS', conditions = dict(method=['OPTIONS']))
+    dispatcher.connect('park_options', '/park/:sid', controller=optionsController, action = 'OPTIONS', conditions = dict(method=['OPTIONS']))
+    dispatcher.connect('service_options', '/service/:sid', controller=optionsController, action = 'OPTIONS', conditions = dict(method=['OPTIONS']))
+
 
     # configuration for server
     conf = { 'global' : { 'server.socket_host' :'student04.cse.nd.edu', 'server.socket_port' : 52080 },
-    '/' : { 'request.dispatch' : dispatcher }, }
+    '/' : { 'request.dispatch' : dispatcher,
+            'tools.CORS.on' : True,
+          }
+            }
 
     cherrypy.config.update(conf)
     app = cherrypy.tree.mount(None, config=conf)
     cherrypy.quickstart(app)
 
 if __name__ == '__main__':
-	start_service()
+    cherrypy.tools.CORS = cherrypy.Tool('before_finalize', CORS)
+    start_service()
