@@ -1,6 +1,6 @@
 # Citi Bike Project
 
-### Server (ws_files)
+### Server (ws_files folder)
 
 The CherryPy server is hosted on student04.cse.nd.edu:52080. 
 
@@ -38,7 +38,7 @@ To test the functionality of the server, navigate to the ws_files directory and 
 
 Once the server is running, run the python script ```python test_ws.py```
 
-### Using the Client (client)
+### Using the Client (client folder)
 
 The top half of the client contains functions for what a user of Citi Bike might do. This includes finding the closest bike station available, parking or renting a bike, and finding a station name based on its ID. 
 
