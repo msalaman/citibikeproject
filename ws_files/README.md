@@ -31,7 +31,13 @@ The CherryPy server is hosted on student04.cse.nd.edu:52080.
 
 ### Testing
 
-To test the functionality of the server, start up the server with the following command: 
+To test the functionality of the server, navigate to the ws_files directory and start up the server with the following command: 
 ```/afs/nd.edu/user14/csesoft/2017-fall/anaconda3/bin/python main.py```
 
 Once the server is running, run the python script ```test_ws.py```
+
+### Using the Client
+
+The top half of the client contains functions for what a user of Citi Bike might do. This includes finding the closest bike station available, parking or renting a bike, and finding a station name based on its ID. 
+
+The bottom half of the client contains Admin functions, such as adding a new station, deleting a station, and changing the status of a station (whether it is in service or not). 
