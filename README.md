@@ -78,3 +78,5 @@ Once the server is running, run the python script ```python test_ws.py```
 The top half of the client contains functions for what a user of Citi Bike might do. This includes finding the closest bike station available, parking or renting a bike, and finding a station name based on its ID. 
 
 The bottom half of the client contains Admin functions, such as adding a new station, deleting a station, and changing the status of a station (whether it is in service or not). 
+
+Demo URL: https://www.youtube.com/watch?v=YWt_EgWPNGQ&feature=youtu.be
