@@ -1,0 +1,25 @@
+body{
+	background-color: #fffdd099; 
+}
+
+h1{
+	font-size: 4em;
+	text-align: center;
+}
+
+.field{
+	margin-top: 50px;
+}
+
+.userBox{
+	background-color: #000080;
+	color: white;
+}
+
+.userBox.div{
+	margin: 100px;
+}
+
+.adminBox{ 
+	background-color: #348FD5C8;
+ }

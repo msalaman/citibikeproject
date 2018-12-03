@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+	<meta charset="utf-8">
+	<title>CitiBike Tracker</title>
+</head>
+<body>
+	<script type="text/javascript" src="citiJS.js"></script>
+	<div class="mainWindow">
+		<h1 style="color:#E12727;" >CitiBike Tracker</h1>
+		<div class="userBox">
+			<div class="field">
+				Find the <b>closest bike station</b> to you by entering your latitude and longitude: 
+				<div>
+					<div style="display: inline;">
+						Latitude:
+						<input name="latitude" type="text">
+					</div>
+					<div style="display: inline">
+						Longitude:
+						<input name="longitude" type="text">
+					</div>
+				</div>
+				<button type="button">FIND STATION</button>
+			</div>
+			<div class="field">
+				<b>Park</b> or <b>Pick up</b> a bike from a station based on its station id:
+				<div> 
+					<div style="display: inline-flex;" >
+						Station ID:
+						<input type="text">
+					</div>
+				</div>
+				<div>
+					<div style="display: inline-flex;">
+						<button type="button">PARK BIKE</button>
+					</div>
+					<div style="display: inline-flex">
+						<button type="button">PICK UP BIKE</button>
+					</div>
+				</div>
+			</div>
+			<div class="field">
+				Find the <b>station name</b> or <b>station status</b> based on the station id
+				<div>
+					<div style="display: inline-flex;" >
+						Station ID:
+						<input type="text">
+					</div>
+				</div>
+				<div>
+					<div style="display: inline-flex;">
+						<button type="button">Find STATION NAME</button>
+					</div>
+					<div style="display: inline-flex">
+						<button type="button">Find STATION STATUS</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="adminBox">
+			<div class="field">
+				<b>Add a station</b>
+				<div>
+					<div>
+						Station name: 
+						<input type="text"> 
+					</div>
+						<div>
+							<div style="display: inline-flex;">
+							Available Docks:
+							<input type="text">
+						</div>
+						<div style="display: inline-flex">
+							Available Bikes:
+							<input type="text">
+						</div>
+					</div>
+						<div>
+							<div style="display: inline-flex;">
+							Latitude:
+							<input type="text">
+						</div>
+						<div style="display: inline-flex">
+							Longitude:
+							<input type="text">
+						</div>
+					</div>
+					<div>
+						Address: 
+						<input type="text"> 
+					</div>
+					<div>
+						<div>
+							<div style="display: inline-flex;">
+							Last Communication Time:
+							<input type="text">
+						</div>
+						<div style="display: inline-flex">
+							Status:
+							<input type="text">
+						</div>
+					</div>
+					<div>
+					<div style="display: inline-flex">
+						<button type="button">ADD STATION</button>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="field">
+				<b>Delete</b> a station based on its station id:
+				<div> 
+					<div style="display: inline-flex;" >
+						Station ID:
+						<input type="text">
+					</div>
+				</div>
+				<div>
+					<div style="display: inline-flex">
+						<button type="button">DELETE STATION</button>
+					</div>
+				</div>
+			</div>
+			<div class="field">
+				<b>Change the status</b> of a station based on its station id:
+				<div> 
+					<div style="display: inline-flex;" >
+						Station ID:
+						<input type="text">
+					</div>
+				</div>
+				<div>
+					<div style="display: inline-flex">
+						<button type="button">CHANGE STATION STATUS</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+
